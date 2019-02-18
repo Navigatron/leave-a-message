@@ -5,13 +5,35 @@
         <title>Leave A Message</title>
     </head>
     <body>
-        <input type="text" name="" value="">
-        <button type="button" name="button">Save!</button>
+        <textarea rows="4" cols="50" id='field'>
+Loading...
+</textarea>
+        <button type="button" name="button" id="button">Save!</button>
         <script type="text/javascript">
+            var field = document.getElementById('field');
+            var bttn = document.getElementById('button');
             window.onload = function(){
                 // GET message
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', "http://api.myjson.com/bins/uh9o2", true);
+                xhr.send();
+
+                xhr.onreadystatechange = processRequest;
+                function processRequest(e) {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        //alert(response.text);
+                        field.value = response.text
+                    }
+                }
             };
             // Add event listener to PUT message
+            bttn.addEventListener('click', function(){
+                var xhr = new XMLHttpRequest();
+                xhr.open('PUT', "http://api.myjson.com/bins/uh9o2", true);
+                xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+                xhr.send({"text":field.value});
+            })
         </script>
     </body>
 </html>
