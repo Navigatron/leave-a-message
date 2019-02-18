@@ -15,7 +15,7 @@ Loading...
             window.onload = function(){
                 // GET message
                 var xhr = new XMLHttpRequest();
-                xhr.open('GET', "http://api.myjson.com/bins/uh9o2", true);
+                xhr.open('GET', "https://api.myjson.com/bins/uh9o2", true);
                 xhr.send();
 
                 xhr.onreadystatechange = processRequest;
@@ -30,7 +30,7 @@ Loading...
             // Add event listener to PUT message
             bttn.addEventListener('click', function(){
                 var xhr = new XMLHttpRequest();
-                xhr.open('PUT', "http://api.myjson.com/bins/uh9o2", true);
+                xhr.open('PUT', "https://api.myjson.com/bins/uh9o2", true);
                 xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
                 xhr.send({"text":field.value});
             })
