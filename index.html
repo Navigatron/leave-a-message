@@ -3,37 +3,61 @@
     <head>
         <meta charset="utf-8">
         <title>Leave A Message</title>
+        <style media="screen">
+            .page{
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            h1{
+                font-family: sans-serif;
+            }
+            textarea{
+                display: block;
+                margin: 1rem 0;
+            }
+        </style>
     </head>
     <body>
-        <textarea rows="4" cols="50" id='field'>
-Loading...
-</textarea>
-        <button type="button" name="button" id="button">Save!</button>
+        <div class="page">
+            <h1>Leave a Message</h1>
+            <textarea rows="4" cols="50" id='field'>Loading...</textarea>
+            <button type="button" id="update">Update</button>
+            <button type="button" id="save">Save!</button>
+        </div>
         <script type="text/javascript">
-            var field = document.getElementById('field');
-            var bttn = document.getElementById('button');
-            window.onload = function(){
-                // GET message
+
+            // Elements
+            var field;
+            var update;
+            var savebt;
+
+            // Load and Save functions
+            function load(){
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', "https://api.myjson.com/bins/uh9o2", true);
+                xhr.onload = () => {
+                    field.value = JSON.parse(xhr.responseText).text;
+                };
                 xhr.send();
+            }
 
-                xhr.onreadystatechange = processRequest;
-                function processRequest(e) {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        var response = JSON.parse(xhr.responseText);
-                        //alert(response.text);
-                        field.value = response.text
-                    }
-                }
-            };
-            // Add event listener to PUT message
-            bttn.addEventListener('click', function(){
+            function save(){
                 var xhr = new XMLHttpRequest();
                 xhr.open('PUT', "https://api.myjson.com/bins/uh9o2", true);
                 xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
-                xhr.send({"text":field.value});
-            })
+                xhr.send(JSON.stringify({"text":field.value}));
+            }
+
+            // Setup when ready
+            window.onload = function(){
+                field = document.getElementById('field');
+                update = document.getElementById('update');
+                savebt = document.getElementById('save');
+                update.addEventListener('click', load);
+                savebt.addEventListener('click', save);
+                load();
+            };
+
         </script>
     </body>
 </html>
