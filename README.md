@@ -6,6 +6,7 @@ At first, you'll see the message left by the last visitor. If you'd like, you ca
 
 ## Try it out
 
+You can see or change the message by clicking this link: 
 [https://navigatron.github.io/leave-a-message/](https://navigatron.github.io/leave-a-message/)
 
 ## Challenge: 15 minutes to MVP :tada:
