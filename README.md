@@ -1,10 +1,17 @@
-# leave-a-message
+# [leave-a-message](https://navigatron.github.io/leave-a-message/) :telephone_receiver:
 
-Goal: In 15 minutes, write a proof-of-concept for a public JSON API.
+A little text field to leave a message in!
 
-Did I succeed? Not quite. I needed another 10 minutes to diagnose a bug - I needed
-to `JSON.stringify` the payload before sending it.
+At first, you'll see the message left by the last visitor. If you'd like, you can replace it with your own message. It will be stored (thanks to [MyJson](https://myjson.com/api)) and shown to the next visitor.
 
-Total time: 25 minutes.
+## Try it out
 
-Since reaching MVP, a few more changes have been made. I added some CSS and cleaned the JS a tad.
+[https://navigatron.github.io/leave-a-message/](https://navigatron.github.io/leave-a-message/)
+
+## Challenge: 15 minutes to MVP :tada:
+
+At first, my goal was to see if I could build this in 15 minutes. I got close! I had to take an extra 10 minutes (for debugging) in order to achieve functionality.
+
+**Total time**: 25 minutes.
+
+After the challenge was over, I cleaned the JS and added some CSS to make it look pretty.
